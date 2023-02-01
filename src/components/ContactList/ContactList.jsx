@@ -1,4 +1,3 @@
-import PropTypes from 'prop-types';
 import { useSelector, useDispatch } from 'react-redux';
 import { deleteContact } from 'redux/operations';
 import { selectContacts, selectFilter } from 'redux/selectors';
@@ -26,7 +25,7 @@ export const ContactList = () => {
     dispatch(deleteContact(contactId));
   };
   const contacts = getFilterContacts();
-
+  console.log(contacts)
   return (
     <Ul>
       {contacts.length === 0 && <p>There is not any contacts</p>}
@@ -44,14 +43,4 @@ export const ContactList = () => {
       })}
     </Ul>
   );
-};
-
-ContactList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.exact({
-      name: PropTypes.string.isRequired,
-      phone: PropTypes.string.isRequired,
-      id: PropTypes.string.isRequired,
-    })
-  ),
 };
